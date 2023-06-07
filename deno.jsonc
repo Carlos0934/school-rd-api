@@ -1,0 +1,7 @@
+{
+  "tasks": {
+    "dev": "deno run --watch --allow-net --allow-read src/main.ts",
+    "populate" : "deno run  --allow-read --allow-write src/scripts/populate.ts"
+  },
+  "importMap": "import_map.json"
+}

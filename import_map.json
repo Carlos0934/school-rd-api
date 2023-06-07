@@ -1,0 +1,11 @@
+{
+    "imports": {
+      
+        "zod" : "https://deno.land/x/zod@v3.21.4/mod.ts",
+        "hono" : "https://deno.land/x/hono@v3.2.4/mod.ts",
+        "http" : "https://deno.land/std@0.190.0/http/server.ts",
+        "faker" : "https://esm.sh/@faker-js/faker@8.0.2",
+        "asserts" : "https://deno.land/std@0.190.0/testing/asserts.ts"
+        
+    }
+}
