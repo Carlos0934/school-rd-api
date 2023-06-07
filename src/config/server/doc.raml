@@ -1,0 +1,65 @@
+#%RAML 1.0
+title: RD School API
+baseUri: http://localhost:8000/api/
+version: 1.0
+
+uses:
+  assets: assets.lib.raml
+
+
+
+/schools:
+  displayName: schools
+  get:
+    is: [ assets.paging ]
+    description: Lists all  schools
+    queryParameters:
+       limit:
+         type: integer
+         description: The number of items to return
+         default: null
+
+        page:
+          type: integer
+          description: The page number to return
+          default: null
+
+        name:
+          type: string
+          description: The name of the school to filter by
+          default: null
+
+        code:
+          type: string
+          description: The code of the school to filter by
+          default: null
+
+        districtCode:
+            type: string
+            description: The district code of the school to filter by
+            default: null
+
+        province:
+            type: string
+            description: The province of the school to filter by
+            default: null
+        type:
+            type: string
+            description: The type of the school to filter by
+            default: null
+            enum: [Private, Public, Hybrid]
+
+        municipality:
+            type: string
+            description: The municipality of the school to filter by
+            default: null
+
+        premise:
+            type: string
+            description: The premise of the school to filter by
+            default: null
+
+        regionalCode:
+            type: string
+            description: The regional code of the school to filter by
+            default: null

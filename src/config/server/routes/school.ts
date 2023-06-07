@@ -11,8 +11,12 @@ const schoolService = new SchoolService(jsonRepository);
 
 schoolRoute.get("/", async (ctx) => {
   const query = ctx.req.queries();
+  const data = Object.keys(query).reduce((acc, key) => {
+    acc[key] = query[key][0];
+    return acc;
+  }, {} as Record<string, string>);
 
-  const parse = SchoolQuerySchema.safeParse(query);
+  const parse = SchoolQuerySchema.safeParse(data);
   if (!parse.success)
     return ctx.json(
       {
@@ -21,7 +25,21 @@ schoolRoute.get("/", async (ctx) => {
       400
     );
 
-  const schools = await schoolService.getSchools(query);
+  const {
+    data: { limit, page, ...filter },
+  } = parse;
+
+  const schools = await schoolService.getSchools({
+    filter,
+    pagination: {
+      page,
+      limit,
+    },
+    sort: {
+      code: 1,
+    },
+  });
+
   return ctx.json(schools);
 });
 
