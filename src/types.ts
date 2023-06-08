@@ -57,6 +57,18 @@ export interface Repository {
   getSchools(): Promise<School[]>;
 }
 
+export interface RateLimitEntry {
+  id: string;
+  requests: number;
+  timestamp: number;
+}
+
+export type Key = string | number | Record<string, string | number>;
+export interface KvRepository<T> {
+  get(key: Key): Promise<T | undefined>;
+  set(key: Key, value: T): Promise<void>;
+}
+
 export interface SchoolService {
   getSchools(query: SchoolQuery): Promise<Page<School>>;
 }

@@ -1,3 +1,3 @@
-import { startServer } from "./config/server/index.ts";
+import { startServer } from './config/server/index.ts'
 
-startServer();
+startServer()
