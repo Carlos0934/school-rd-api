@@ -36,4 +36,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: school-rd-api # the name of the project on Deno Deploy
-          entrypoint: src/main.ts # the entrypoint to deploy
+          entrypoint: ./src/main.ts # the entrypoint to deploy
+
