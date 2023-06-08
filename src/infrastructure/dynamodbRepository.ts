@@ -3,8 +3,7 @@ import { DynamoDBClient } from 'dynamodb-client'
 import { Key, KvRepository } from '../types.ts'
 
 export class DynamoDbRepository<T extends Record<string, unknown>>
-	implements KvRepository<T>
-{
+	implements KvRepository<T> {
 	private readonly client: DynamoDBDocumentClient
 
 	constructor(private readonly tableName: string) {
