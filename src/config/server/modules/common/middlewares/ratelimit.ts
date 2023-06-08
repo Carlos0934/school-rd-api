@@ -1,10 +1,11 @@
 import { MiddlewareHandler } from "hono";
-import { RateLimitService } from "../../../services/rateLimit.service.ts";
-import { RateLimitEntry } from "../../../types.ts";
-import { DynamoDbRepository } from "../../../infrastructure/dynamodbRepository.ts";
+import { RateLimitEntry } from "../../../../../types.ts";
+import { RateLimitService } from "../../../../../services/rateLimit.service.ts";
+import { DynamoDbRepository } from "../../../../../infrastructure/dynamodbRepository.ts";
 
 const kvRepository = new DynamoDbRepository<RateLimitEntry>("rate-limits");
 export const rateLimitService = new RateLimitService(kvRepository);
+
 export const rateLimitMiddleware: MiddlewareHandler = async (ctx, next) => {
   const remoteAddr: Deno.NetAddr = ctx.env.remoteAddr;
 
