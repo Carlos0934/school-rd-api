@@ -3,8 +3,8 @@ title: RD School API
 baseUri: http://localhost:8000/api/
 version: 1.0
 
-uses:
-  assets: assets.lib.raml
+
+  
 
 
 
@@ -63,3 +63,21 @@ uses:
             type: string
             description: The regional code of the school to filter by
             default: null
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/schools.json
+            
+
+/schools/{code}:
+  displayName: schools
+  get:
+    description: Get a school by code
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/school.json
+      
