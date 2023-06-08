@@ -34,9 +34,8 @@ Deno.test('Should return school by code and name', async () => {
 Deno.test('Should limit the number of results', async () => {
 	const limit = 5
 	const data = SchoolMother.randomList(limit)
-	const searchSchoolUseCase = SchoolUseCaseBuilder.buildSearchSchoolUseCase(
-		data,
-	)
+	const searchSchoolUseCase =
+		SchoolUseCaseBuilder.buildSearchSchoolUseCase(data)
 
 	const result = await searchSchoolUseCase.execute({
 		pagination: { limit },
@@ -50,9 +49,8 @@ Deno.test('Should paginate the results', async () => {
 	const page = 2
 	const data = SchoolMother.randomList(limit * page)
 	const slicedData = data.slice(limit, limit * page)
-	const searchSchoolUseCase = SchoolUseCaseBuilder.buildSearchSchoolUseCase(
-		data,
-	)
+	const searchSchoolUseCase =
+		SchoolUseCaseBuilder.buildSearchSchoolUseCase(data)
 
 	const result = await searchSchoolUseCase.execute({
 		pagination: { limit, page },
@@ -66,9 +64,8 @@ Deno.test('Should return the total number of results', async () => {
 	const limit = 5
 	const page = 2
 	const data = SchoolMother.randomList(limit * page)
-	const searchSchoolUseCase = SchoolUseCaseBuilder.buildSearchSchoolUseCase(
-		data,
-	)
+	const searchSchoolUseCase =
+		SchoolUseCaseBuilder.buildSearchSchoolUseCase(data)
 
 	const result = await searchSchoolUseCase.execute({
 		pagination: { limit, page },

@@ -1,78 +1,78 @@
-import { SchoolLevel, SchoolType } from "./constants/school.ts";
+import { SchoolLevel, SchoolType } from './constants/school.ts'
 
 export type School = {
-  name: string;
-  code: string;
-  districtCode: string;
-  province: string;
-  type: SchoolType;
-  levels: SchoolLevel[];
-  municipality: string;
-  coordinates: number[];
-  premise: string;
-  regionalCode: string;
+	name: string
+	code: string
+	districtCode: string
+	province: string
+	type: SchoolType
+	levels: SchoolLevel[]
+	municipality: string
+	coordinates: number[]
+	premise: string
+	regionalCode: string
 
-  enrollment: number;
-};
+	enrollment: number
+}
 export type Page<T> = {
-  data: T[];
-  page: number;
-  count: number;
-  nextPage?: number;
-  prevPage?: number;
-};
+	data: T[]
+	page: number
+	count: number
+	nextPage?: number
+	prevPage?: number
+}
 export type Database = {
-  schools: School[];
-};
+	schools: School[]
+}
 
 export type SchoolQuery = {
-  filter?: {
-    name?: string;
-    code?: string;
-    districtCode?: string;
-    province?: string;
-    type?: SchoolType;
-    municipality?: string;
+	filter?: {
+		name?: string
+		code?: string
+		districtCode?: string
+		province?: string
+		type?: SchoolType
+		municipality?: string
 
-    premise?: string;
-    regionalCode?: string;
-  };
-  pagination?: {
-    page?: number;
-    limit?: number;
-  };
+		premise?: string
+		regionalCode?: string
+	}
+	pagination?: {
+		page?: number
+		limit?: number
+	}
 
-  sort?: {
-    code?: number;
-    name?: number;
-    districtCode?: number;
-    province?: number;
-    type?: number;
-    municipality?: number;
+	sort?: {
+		code?: number
+		name?: number
+		districtCode?: number
+		province?: number
+		type?: number
+		municipality?: number
 
-    enrollment?: number;
-  };
-};
+		enrollment?: number
+	}
+}
 export interface Repository {
-  getSchools(): Promise<School[]>;
+	getSchools(): Promise<School[]>
 }
 
 export interface RateLimitEntry {
-  id: string;
-  requests: number;
-  timestamp: number;
+	id: string
+	requests: number
+	timestamp: number
 }
 
-export type Key = string | number | Record<string, string | number>;
+export type Key = string | number | Record<string, string | number>
 export interface KvRepository<T> {
-  get(key: Key): Promise<T | undefined>;
-  set(key: Key, value: T): Promise<void>;
+	get(key: Key): Promise<T | undefined>
+	set(key: Key, value: T): Promise<void>
 }
 
 export interface SchoolService {
-  getSchools(query: SchoolQuery): Promise<Page<School>>;
+	getSchools(query: SchoolQuery): Promise<Page<School>>
 }
 
 export interface UseCase<T = void, R = void> {
-  execute(params: T): Promise<R>;
+	execute(params: T): Promise<R>
 }
