@@ -5,6 +5,7 @@ import { usesCasesContainer } from "../../../../../utils/usesCasesContainer.ts";
 export const getSchoolsHandler: Handler = async (ctx) => {
   const query = ctx.req.queries();
 
+  // take the first value of each query param
   const data = Object.keys(query).reduce((acc, key) => {
     acc[key] = query[key][0];
     return acc;
