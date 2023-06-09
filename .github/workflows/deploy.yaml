@@ -37,4 +37,3 @@ jobs:
         with:
           project: "school-rd-api" # the name of the project on Deno Deploy
           entrypoint: ./src/main.ts # the entrypoint to deploy
-
